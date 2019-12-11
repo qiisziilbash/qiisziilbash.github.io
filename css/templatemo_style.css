@@ -404,6 +404,8 @@ form { width: 430px; }
 #google { background: url('../images/social-icons.png') -113px 0; }
 #vimeo { background: url('../images/social-icons.png') -167px 0; }
 #flickr { background: url('../images/social-icons.png') -220px 0; }
+#github { background: url('../images/linkedin-github.png') -5px 0; }
+#linkedin { background: url('../images/linkedin-github.png') -59px 0; }
 footer { padding-bottom: 50px; }
 .templatemo-copyright-container { padding-left: 30px; }
 
@@ -565,6 +567,7 @@ have a fixed width and height (but it's not required).
   .templatemo-service-image {
     float: none;
     margin: 20px auto 10px auto;
+
   }
   .templatemo-service-content {
     margin-left: auto;
