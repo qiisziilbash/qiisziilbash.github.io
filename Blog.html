@@ -398,7 +398,6 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/jquery.jcarousel.min.js"></script>
 	<script src="js/templatemo_script.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script>
 	$(document).ready(function(){
 		checkScreen();
@@ -423,7 +422,13 @@
 	</script>
 	<script>
 		function loadRecentMonth(){
-
+			$.ajax({
+				type: "GET",
+				url: "https://github.com/qiisziilbash",
+				success: function(data){
+					alert('hi');
+				}
+			});
 		}
 	</script>
 </body>
