@@ -398,9 +398,11 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/jquery.jcarousel.min.js"></script>
 	<script src="js/templatemo_script.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script>
 	$(document).ready(function(){
 		checkScreen();
+		loadRecentMonth();
 		$(document).load($(window).bind("resize", checkScreen));
 	 });
 	</script>
@@ -417,6 +419,11 @@
 				document.getElementById("pair2-1").style.display = "inline";
 				document.getElementById("pair2-2").style.display = "none";
 			}
+		}
+	</script>
+	<script>
+		function loadRecentMonth(){
+
 		}
 	</script>
 </body>
