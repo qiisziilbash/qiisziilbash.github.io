@@ -42,14 +42,20 @@ h3 {
   font-weight: 600;
   margin-top: 0;
 }
-body a{
+.templatemo-site-header a{
   color: inherit;
 }
+
+
 a:hover, a:focus { 
   color: #b28601;
-  text-decoration: none; 
 }
-p { color: #929292; }
+p {
+  color: white;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-left: 1em;
+}
 ul { margin: 0; }
 
 .blue {
