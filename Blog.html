@@ -61,26 +61,8 @@
 		document.getElementById("gallary").append("sdk.fnjasdfsdk.fnjasdf" );
 		document.getElementById("gallary").append("sdk.fnjasdfsdk.fnjasdf" );
 
-		checkScreen();
-		$(document).load($(window).bind("resize", checkScreen));
-
 	 });
 	</script>
 
-	<script>
-		function checkScreen() {
-			if (window.matchMedia('(max-width: 1000px)').matches) {
-				document.getElementById("pair1-1").style.display = "none";
-				document.getElementById("pair1-2").style.display = "inline";
-				document.getElementById("pair2-1").style.display = "none";
-				document.getElementById("pair2-2").style.display = "inline";
-			} else {
-				document.getElementById("pair1-1").style.display = "inline";
-				document.getElementById("pair1-2").style.display = "none";
-				document.getElementById("pair2-1").style.display = "inline";
-				document.getElementById("pair2-2").style.display = "none";
-			}
-		}
-	</script>
 </body>
 </html>
