@@ -55,14 +55,34 @@
 	<script src="js/templatemo_script.js"></script>
 	<script>
 	$(document).ready(function(){
-		document.getElementById("gallary").append("sdk.fnjasdfsdk.fnjasdf" );
-		document.getElementById("gallary").append("sdk.fnjasdfsdk.fnjasdf" );
-		document.getElementById("gallary").append("sdk.fnjasdfsdk.fnjasdf" );
-		document.getElementById("gallary").append("sdk.fnjasdfsdk.fnjasdf" );
-		document.getElementById("gallary").append("sdk.fnjasdfsdk.fnjasdf" );
+		var i = 1;
+		var dt = new Date();
+		alert(dt.getHours());
 
+		while(i < 50){
+				document.getElementById("gallary").innerHTML += "<hr> <p> test " + i + " </p>";
+				i++;
+			}
 	 });
+
 	</script>
+
+	<script>
+		var j = 1;
+		var k = 1;
+
+		$(window).scroll(function() {
+			if($(window).scrollTop() == $(document).height() - $(window).height()) {
+				while(j < 50){
+					document.getElementById("gallary").innerHTML += "<hr> <p> test " + k + " </p>";
+					j++;
+					k++;
+				}
+				j = 1;
+			}
+		});
+	</script>
+
 
 </body>
 </html>
