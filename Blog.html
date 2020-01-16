@@ -16,6 +16,22 @@
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="css/templatemo_style.css" rel="stylesheet" type="text/css">
+	<style>
+		.gallary{
+			display: grid;
+			grid-gap: 20px;
+			grid-template-columns: repeat(auto-fill,minmax(350px, 1fr));
+		}
+		.item{
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		.item img{
+			width: 100%;
+			height: 100%;
+		}
+	</style>
 </head>
 <body>
 	<div class="templatemo-site-header">
@@ -34,7 +50,10 @@
     </div>
 
 	<section id="home" class="templatemo-section">
-		<div class="container" id="gallary">
+		<div class="container" id="wrapper">
+			<div class="gall" id="gallary">
+
+			</div>
 
 		</div>
 	</section>
@@ -55,14 +74,31 @@
 	<script src="js/templatemo_script.js"></script>
 	<script>
 	$(document).ready(function(){
-		var i = 1;
 		var dt = new Date();
-		alert(dt.getHours());
+		var year = dt.getFullYear();
+		var month = dt.getMonth() + 1;
+		var year_month = year.toString() + '-' + String("0" + month.toString()).slice(-2);
+		var image = "";
+		var day = 1;
+		var img = 1;
 
-		while(i < 50){
-				document.getElementById("gallary").innerHTML += "<hr> <p> test " + i + " </p>";
-				i++;
+		document.getElementById("wrapper").innerHTML += "<h2 class='templatemo-gold'>" +
+				year_month + "↣"+ "</h2><hr>";
+		document.getElementById("wrapper").innerHTML += "<div class='gallary' id='"+year_month+"'></div>";
+
+		while(day < 32){
+			while (img < 10){ // 9 img per day limit
+				image = 'images/quotes/'
+						+ year.toString() +
+						String("0" + month.toString()).slice(-2) +
+						String("0" + day.toString()).slice(-2) +
+						'-' + img.toString() + '.jpg';
+				document.getElementById(year_month).innerHTML += "<div class='item'>"+
+						"<img src='"+image+"' alt=''>"+ "</div>";
+				img++;
 			}
+			day++;
+		}
 	 });
 
 	</script>
@@ -74,7 +110,7 @@
 		$(window).scroll(function() {
 			if($(window).scrollTop() == $(document).height() - $(window).height()) {
 				while(j < 50){
-					document.getElementById("gallary").innerHTML += "<hr> <p> test " + k + " </p>";
+					document.getElementById("wrapper").innerHTML += "<hr> <p> test " + k + " </p>";
 					j++;
 					k++;
 				}
