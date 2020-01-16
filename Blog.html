@@ -23,6 +23,7 @@
 			grid-template-columns: repeat(auto-fill,minmax(350px, 1fr));
 		}
 		.item{
+			background-color: #4cae4c;
 			position: relative;
 			width: 100%;
 			height: 100%;
@@ -38,11 +39,14 @@
 		<div class="container">
 			<div class="row templatemo-position-relative">
 				<h1 class="templatemo-site-name">
-                	<span class="templatemo-brown"></span>
+                	<span class="templatemo-brown"> </span>
 					<span class="templatemo-brown">
 						<a href="index.html" data-toggle="tooltip" data-placement="right" title="Home">
 							<i class="fa fa-home"></i>
 						</a>
+					</span>
+					<span style="float:right;">
+						<h2 class="templatemo-gold" id="scroll-date"></h2>
 					</span>
                 </h1>
 			</div>
@@ -82,11 +86,11 @@
 		var day = 1;
 		var img = 1;
 
-		document.getElementById("wrapper").innerHTML += "<h2 class='templatemo-gold'>" +
-				year_month + "↣"+ "</h2><hr>";
+		document.getElementById("wrapper").innerHTML += "<h2 class='templatemo-gold'>" + year_month + "↣"+ "</h2><hr>";
 		document.getElementById("wrapper").innerHTML += "<div class='gallary' id='"+year_month+"'></div>";
 
 		while(day < 32){
+
 			while (img < 10){ // 9 img per day limit
 				image = 'images/quotes/'
 						+ year.toString() +
@@ -104,17 +108,45 @@
 	</script>
 
 	<script>
-		var j = 1;
-		var k = 1;
+		var dt = new Date();
+		var year = dt.getFullYear();
+		var month = dt.getMonth() + 1;
+		var year_month = "";
+		var image = "";
 
 		$(window).scroll(function() {
 			if($(window).scrollTop() == $(document).height() - $(window).height()) {
-				while(j < 50){
-					document.getElementById("wrapper").innerHTML += "<hr> <p> test " + k + " </p>";
-					j++;
-					k++;
+				month -= 1;
+				if(month === 0){
+					year -= 1;
+					month = 12;
 				}
-				j = 1;
+
+				if(year > 2018){
+					year_month = year.toString() + '-' + String("0" + month.toString()).slice(-2);
+					document.getElementById("scroll-date").innerText = year_month;
+
+					var day = 1;
+					var img = 1;
+
+					document.getElementById("wrapper").innerHTML += "<h2 class='templatemo-gold'>" + year_month + "↣"+ "</h2><hr>";
+					document.getElementById("wrapper").innerHTML += "<div class='gallary' id='"+year_month+"'></div>";
+
+					while(day < 32){
+						while (img < 10){ // 9 img per day limit
+							image = 'images/quotes/'
+									+ year.toString() +
+									String("0" + month.toString()).slice(-2) +
+									String("0" + day.toString()).slice(-2) +
+									'-' + img.toString() + '.jpg';
+							document.getElementById(year_month).innerHTML += "<div class='item'>"+
+									"<img src='"+image+"' alt=''>"+ "</div>";
+							img++;
+						}
+						day++;
+					}
+
+				}
 			}
 		});
 	</script>
