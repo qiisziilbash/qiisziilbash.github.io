@@ -26,7 +26,7 @@
 			background-color: #4cae4c;
 			position: relative;
 			width: 100%;
-			height: 100%;
+			height: 95%;
 		}
 		.item img{
 			width: 100%;
@@ -78,52 +78,65 @@
 	<script src="js/templatemo_script.js"></script>
 	<script>
 	$(document).ready(function(){
-		fetch("https://github.com/qiisziilbash/qiisziilbash.github.io/blob/master/images/quotes/20190201-1.jpg")
-		  .then(response => {
-			if(response.status == 200) {
-			  alert("Found!")
-			} else if(response.status == 404) {
-			  alert("File does not exist")
-			} else {
-			 alert("Other error")
-			}
-	  });
-
 		var dt = new Date();
 		var year = dt.getFullYear();
 		var month = dt.getMonth() + 1;
-		var year_month = year.toString() + '-' + String("0" + month.toString()).slice(-2);
-		var image = "";
-		var day = 1;
-		var img = 1;
 
-		document.getElementById("wrapper").innerHTML += "<h2 class='templatemo-gold'>" + year_month + "↣"+ "</h2><hr>";
-		document.getElementById("wrapper").innerHTML += "<div class='gallary' id='"+year_month+"'></div>";
-
-		while(day < 32){
-
-			while (img < 10){ // 9 img per day limit
-				image = 'images/quotes/'
-						+ year.toString() +
-						String("0" + month.toString()).slice(-2) +
-						String("0" + day.toString()).slice(-2) +
-						'-' + img.toString() + '.jpg';
-				document.getElementById(year_month).innerHTML += "<div class='item'>"+
-						"<img src='"+image+"' alt=''>"+ "</div>";
-				img++;
-			}
-			day++;
-		}
+		append_images(year, month);
 	 });
 
 	</script>
 
 	<script>
+		async function append_images(year, month) {
+
+
+			var year_month = year.toString() + '-' + String("0" + month.toString()).slice(-2);
+
+			var day = 1;
+			var img = 1;
+
+			document.getElementById("wrapper").innerHTML += "<br><h2 class='templatemo-gold'>" + year_month + "↣"+ "</h2><hr>";
+			document.getElementById("wrapper").innerHTML += "<div class='gallary' id='"+year_month+"'></div>";
+
+
+			while(day < 32){
+				img = 1;
+				while (img < 10){ // 9 img per day limit
+					const image = 'images/quotes/'
+							+ year.toString() +
+							String("0" + month.toString()).slice(-2) +
+							String("0" + day.toString()).slice(-2) +
+							'-' + img.toString() + '.jpg';
+
+					const targetUrl = "https://github.com/qiisziilbash/qiisziilbash.github.io/blob/master/" + image;
+					const response = await fetch('https://cors-anywhere.herokuapp.com/' + targetUrl);
+
+					if( response.status == 200){
+						document.getElementById(year_month).innerHTML += "<div class='item'>" +
+								"<img src='" + image + "' alt=''> <span class='templatemo-brown'> @"+
+								year.toString() + '-' + String("0" + month.toString()).slice(-2) +
+								"</span><span class='templatemo-gold'>"+
+								'-' + String("0" + day.toString()).slice(-2) +
+								"</span><span style='color: yellow'>"+
+								'-' + img.toString() +
+								"</span>" + "</div>";
+					}else{
+						break;
+					}
+
+					img++;
+				}
+				day++;
+			}
+		}
+	</script>
+
+
+	<script>
 		var dt = new Date();
 		var year = dt.getFullYear();
 		var month = dt.getMonth() + 1;
-		var year_month = "";
-		var image = "";
 
 		$(window).scroll(function() {
 			if($(window).scrollTop() == $(document).height() - $(window).height()) {
@@ -134,29 +147,7 @@
 				}
 
 				if(year > 2018){
-					year_month = year.toString() + '-' + String("0" + month.toString()).slice(-2);
-					document.getElementById("scroll-date").innerText = year_month;
-
-					var day = 1;
-					var img = 1;
-
-					document.getElementById("wrapper").innerHTML += "<h2 class='templatemo-gold'>" + year_month + "↣"+ "</h2><hr>";
-					document.getElementById("wrapper").innerHTML += "<div class='gallary' id='"+year_month+"'></div>";
-
-					while(day < 32){
-						while (img < 10){ // 9 img per day limit
-							image = 'images/quotes/'
-									+ year.toString() +
-									String("0" + month.toString()).slice(-2) +
-									String("0" + day.toString()).slice(-2) +
-									'-' + img.toString() + '.jpg';
-							document.getElementById(year_month).innerHTML += "<div class='item'>"+
-									"<img src='"+image+"' alt=''>"+ "</div>";
-							img++;
-						}
-						day++;
-					}
-
+					append_images(year, month);
 				}
 			}
 		});
