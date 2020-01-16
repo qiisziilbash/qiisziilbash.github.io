@@ -78,6 +78,17 @@
 	<script src="js/templatemo_script.js"></script>
 	<script>
 	$(document).ready(function(){
+		fetch("https://github.com/qiisziilbash/qiisziilbash.github.io/blob/master/images/quotes/20190201-1.jpg")
+		  .then(response => {
+			if(response.status == 200) {
+			  alert("Found!")
+			} else if(response.status == 404) {
+			  alert("File does not exist")
+			} else {
+			 alert("Other error")
+			}
+	  });
+
 		var dt = new Date();
 		var year = dt.getFullYear();
 		var month = dt.getMonth() + 1;
