@@ -107,6 +107,11 @@
 							String("0" + month.toString()).slice(-2) +
 							String("0" + day.toString()).slice(-2) +
 							'-' + img.toString() + '.png';
+					const image_j = 'images/quotes/'
+							+ year.toString() +
+							String("0" + month.toString()).slice(-2) +
+							String("0" + day.toString()).slice(-2) +
+							'-' + img.toString() + '.jpg';
 
 					var file = new Image();
 
@@ -120,6 +125,15 @@
 								"</span><span style='color: yellow'>"+
 								'-' + image.slice(-5,-4) +
 								"</span>" + "</div>";
+						document.getElementById(year_month).innerHTML += "<div class='item'>" +
+								"<img src='" + image_j + "' alt=''><span class='templatemo-brown'> @"+
+								year.toString() + '-' + String("0" + month.toString()).slice(-2) +
+								"</span><span class='templatemo-gold'>"+
+								'-' + image.slice(-8,-6) +
+								"</span><span style='color: yellow'>"+
+								'-' + image.slice(-5,-4) +
+								"</span>" + "</div>";
+
 					};
 
 
